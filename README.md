@@ -19,7 +19,7 @@ Repositorio correspondiente a la entrega práctica de **TEORIA - ACT 1**, enfoca
 ## 📁 Estructura del Repositorio
 
 ```text
-├── version_chatgpt/             # Versión generada con ChatGPT (GPT-4o)
+├── version_gemini/             # Versión generada con Gemini
 │   ├── index.html
 │   ├── estilosIA.css
 │   └── imágenes/
@@ -30,7 +30,7 @@ Repositorio correspondiente a la entrega práctica de **TEORIA - ACT 1**, enfoca
 │       ├── anime1.png
 │       └── anime2.png
 │
-├── version_claude/              # Versión generada con Claude (3.5 Sonnet)
+├── version_claude/              # Versión generada con Claude (Sonnet 5)
 │   ├── index.html
 │   ├── estilosIA.css
 │   └── imágenes/

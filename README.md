@@ -1,6 +1,6 @@
  # Práctica de Generación Web con Inteligencia Artificial
 
-Repositorio correspondiente a la entrega práctica de **TEORIA - ACT 1**, enfocado en la generación, comparación y auditoría de dos sitios web estáticos creados a partir de un mismo prompt en dos modelos de IA generativa distintos (**ChatGPT / OpenAI GPT-4o** y **Claude 3.5 Sonnet / Anthropic**).
+Repositorio correspondiente a la entrega práctica de **TEORIA - ACT 1**, enfocado en la generación, comparación y auditoría de dos sitios web estáticos creados a partir de un mismo prompt en dos modelos de IA generativa distintos (**Gemini / FLash** y **Claude Sonnet 5 / Anthropic**).
 
 ---
 

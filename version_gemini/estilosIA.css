@@ -1,0 +1,625 @@
+/* ==========================================================================
+   ESTILOS GENERALES Y VARIABLES CSS (estilosIA.css)
+   Arquitectura moderna, sin JavaScript, accesible (WCAG AA)
+   ========================================================================== */
+
+:root {
+  /* Paleta cromática accesible (mínimo ratio 4.5:1 para texto normal) */
+  --color-fondo: #f6f8fa;
+  --color-superficie: #ffffff;
+  --color-texto-principal: #1f2937;
+  --color-texto-secundario: #4b5563;
+  --color-borde: #d1d5db;
+  --color-borde-fuerte: #9ca3af;
+  
+  /* Tonos primarios y acentos */
+  --color-primario: #1e3a8a;       /* Azul marino de alto contraste */
+  --color-primario-hover: #172554;
+  --color-acento: #0d9488;         /* Verde azulado elegante */
+  --color-acento-claro: #ccfbf1;
+  --color-focus: #ea580c;          /* Naranja visible para focus ring accesible */
+
+  /* Passe-partout y marco de dibujos */
+  --marco-fondo: #faf7f2;          /* Tono lino/marfil cálido para passe-partout */
+  --marco-borde: #374151;          /* Borde definido de madera/metal oscuro */
+  --marco-sombra: rgba(15, 23, 42, 0.12);
+
+  /* Tipografías y espaciados */
+  --fuente-base: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --radio-borde: 8px;
+  --transicion-estandar: 0.25s ease;
+}
+
+/* Reset básico y modelo de caja */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 100%;
+}
+
+body {
+  font-family: var(--fuente-base);
+  background-color: var(--color-fondo);
+  color: var(--color-texto-principal);
+  line-height: 1.6;
+  text-rendering: optimizeLegibility;
+}
+
+/* Enlace de accesibilidad para lectores de pantalla y teclado */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 1rem;
+  background: var(--color-primario);
+  color: #ffffff;
+  padding: 0.6rem 1.2rem;
+  font-weight: 700;
+  z-index: 9999;
+  text-decoration: none;
+  border-radius: var(--radio-borde);
+  transition: top var(--transicion-estandar);
+}
+
+.skip-link:focus {
+  top: 1rem;
+  outline: 3px solid var(--color-focus);
+}
+
+/* Utilidad para accesibilidad (lectores de pantalla) */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Contenedor responsivo centrado */
+.contenedor {
+  width: 90%;
+  max-width: 1140px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ==========================================================================
+   CABECERA Y NAVEGACIÓN
+   ========================================================================== */
+.sitio-header {
+  background-color: var(--color-superficie);
+  border-bottom: 1px solid var(--color-borde);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.header-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 0;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.logo-area {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.logo-icono {
+  font-size: 1.75rem;
+}
+
+.logo-texto {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--color-primario);
+  letter-spacing: -0.5px;
+}
+
+.nav-lista {
+  display: flex;
+  list-style: none;
+  gap: 1.5rem;
+}
+
+.nav-enlace {
+  text-decoration: none;
+  color: var(--color-texto-principal);
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 0.5rem 0.75rem;
+  border-radius: var(--radio-borde);
+  transition: background-color var(--transicion-estandar), color var(--transicion-estandar);
+}
+
+.nav-enlace:hover {
+  background-color: #e5e7eb;
+  color: var(--color-primario);
+}
+
+.nav-enlace:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+.filtro-radio:focus-visible + .filtro-etiqueta,
+.red-enlace:focus-visible,
+.volver-arriba:focus-visible {
+  outline: 3px solid var(--color-focus);
+  outline-offset: 2px;
+}
+
+/* ==========================================================================
+   SECCIONES Y TÍTULOS
+   ========================================================================== */
+.seccion-hero {
+  background: linear-gradient(135deg, #1e3a8a 0%, #172554 100%);
+  color: #ffffff;
+  padding: 3.5rem 0;
+  text-align: center;
+}
+
+.seccion-hero h2 {
+  font-size: 2.25rem;
+  margin-bottom: 0.75rem;
+  font-weight: 800;
+}
+
+.seccion-hero p {
+  font-size: 1.15rem;
+  max-width: 650px;
+  margin: 0 auto;
+  opacity: 0.9;
+}
+
+.seccion-catalogo,
+.seccion-autor,
+.seccion-contacto {
+  padding: 4rem 0;
+}
+
+.seccion-titulo {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--color-primario);
+  text-align: center;
+  margin-bottom: 0.5rem;
+}
+
+.seccion-subtitulo {
+  text-align: center;
+  color: var(--color-texto-secundario);
+  margin-bottom: 2.5rem;
+  font-size: 1.05rem;
+}
+
+/* ==========================================================================
+   MECANISMO DE FILTRADO CSS PURO (:checked)
+   ========================================================================== */
+.filtro-categoria {
+  border: none;
+  display: flex;
+  justify-content: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-bottom: 3rem;
+}
+
+/* Ocultar visualmente los radios manteniendo accesibilidad por teclado */
+.filtro-radio {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+}
+
+/* Estilo de los botones de categoría (labels vinculados por 'for') */
+.filtro-etiqueta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.65rem 1.3rem;
+  background-color: var(--color-superficie);
+  color: var(--color-texto-principal);
+  border: 2px solid var(--color-borde);
+  border-radius: 9999px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  transition: all var(--transicion-estandar);
+  user-select: none;
+}
+
+.filtro-etiqueta:hover {
+  border-color: var(--color-primario);
+  background-color: #f0f4ff;
+  color: var(--color-primario);
+}
+
+/* ESTADO SELECCIONADO (:checked): Cambia apariencia del botón */
+.filtro-radio:checked + .filtro-etiqueta {
+  background-color: var(--color-primario);
+  color: #ffffff;
+  border-color: var(--color-primario);
+  box-shadow: 0 4px 10px rgba(30, 58, 138, 0.25);
+}
+
+/* LÓGICA DE VISIBILIDAD DE TARJETAS POR CSS PURO */
+/* Por defecto se muestran todas */
+.tarjeta-dibujo {
+  display: block;
+  opacity: 1;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* Reglas de filtrado cuando se marca un radio específico:
+   Se ocultan todos los elementos y se habilitan exclusivamente los de su clase */
+.sistema-galeria:has(#cat-caricaturas:checked) .tarjeta-dibujo:not(.item-caricaturas) {
+  display: none;
+}
+
+.sistema-galeria:has(#cat-paisajes:checked) .tarjeta-dibujo:not(.item-paisajes) {
+  display: none;
+}
+
+.sistema-galeria:has(#cat-anime:checked) .tarjeta-dibujo:not(.item-anime) {
+  display: none;
+}
+
+/* Fallback estándar de hermanos generales para navegadores antiguos que no soporten :has */
+#cat-caricaturas:checked ~ .galeria-grilla .tarjeta-dibujo:not(.item-caricaturas),
+#cat-paisajes:checked ~ .galeria-grilla .tarjeta-dibujo:not(.item-paisajes),
+#cat-anime:checked ~ .galeria-grilla .tarjeta-dibujo:not(.item-anime) {
+  display: none;
+}
+
+/* ==========================================================================
+   ESTILO DE DIBUJOS: Borde Definido + Passe-partout (Uniforme y Armónico)
+   ========================================================================== */
+.galeria-grilla {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 2rem;
+  justify-content: center;
+}
+
+.tarjeta-dibujo {
+  background-color: var(--color-superficie);
+  border-radius: var(--radio-borde);
+  box-shadow: 0 4px 14px var(--marco-sombra);
+  overflow: hidden;
+  border: 1px solid var(--color-borde);
+}
+
+.cuadro-arte {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+/* El marco que emula passe-partout de galería */
+.marco-passepartout {
+  background-color: var(--marco-fondo);
+  padding: 1.5rem; /* Relleno uniforme que hace de marco interior */
+  border-bottom: 2px solid var(--color-borde);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* La imagen con su borde definido, relación de aspecto y sombra interior sutil */
+.marco-passepartout img {
+  display: block;
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+  border: 3px solid var(--marco-borde); /* Borde definido exterior de la obra */
+  border-radius: 4px;
+  background-color: #ffffff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  transition: transform var(--transicion-estandar);
+}
+
+.tarjeta-dibujo:hover .marco-passepartout img {
+  transform: scale(1.02);
+}
+
+.info-obra {
+  padding: 1.25rem 1.5rem;
+  background-color: var(--color-superficie);
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  flex-grow: 1;
+}
+
+.badge-categoria {
+  align-self: flex-start;
+  background-color: var(--color-acento-claro);
+  color: var(--color-acento);
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.25rem 0.6rem;
+  border-radius: 4px;
+}
+
+.obra-titulo {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--color-texto-principal);
+}
+
+.obra-descripcion {
+  font-size: 0.92rem;
+  color: var(--color-texto-secundario);
+}
+
+/* ==========================================================================
+   SECCIÓN AUTOR Y BIOGRAFÍA
+   ========================================================================== */
+.seccion-autor {
+  background-color: #f1f5f9;
+  border-top: 1px solid var(--color-borde);
+  border-bottom: 1px solid var(--color-borde);
+}
+
+.autor-tarjeta {
+  background-color: var(--color-superficie);
+  border-radius: var(--radio-borde);
+  border: 1px solid var(--color-borde);
+  padding: 2.5rem;
+  display: flex;
+  gap: 2.5rem;
+  align-items: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+}
+
+.autor-avatar-contenedor {
+  width: 120px;
+  height: 120px;
+  min-width: 120px;
+  background-color: #e0e7ff;
+  color: var(--color-primario);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+  border: 3px solid var(--color-primario);
+}
+
+.autor-bio h3 {
+  font-size: 1.35rem;
+  color: var(--color-primario);
+  margin-bottom: 0.6rem;
+}
+
+.autor-bio p {
+  color: var(--color-texto-secundario);
+  margin-bottom: 1.25rem;
+}
+
+.redes-titulo {
+  font-size: 0.95rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: var(--color-texto-principal);
+}
+
+.redes-lista {
+  display: flex;
+  gap: 1rem;
+  list-style: none;
+  flex-wrap: wrap;
+}
+
+.red-enlace {
+  display: inline-block;
+  color: var(--color-primario);
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color var(--transicion-estandar);
+}
+
+.red-enlace:hover {
+  color: var(--color-acento);
+}
+
+/* ==========================================================================
+   FORMULARIO DE CONTACTO
+   ========================================================================== */
+.formulario-contacto {
+  background-color: var(--color-superficie);
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 2.5rem;
+  border-radius: var(--radio-borde);
+  border: 1px solid var(--color-borde);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+}
+
+.campo-grupo {
+  margin-bottom: 1.4rem;
+}
+
+.campo-label {
+  display: block;
+  font-weight: 600;
+  font-size: 0.95rem;
+  margin-bottom: 0.4rem;
+  color: var(--color-texto-principal);
+}
+
+.requerido {
+  color: #dc2626;
+}
+
+.campo-control {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  font-family: inherit;
+  font-size: 1rem;
+  border: 1.5px solid var(--color-borde);
+  border-radius: 6px;
+  background-color: #ffffff;
+  color: var(--color-texto-principal);
+  transition: border-color var(--transicion-estandar), box-shadow var(--transicion-estandar);
+}
+
+.campo-control:hover {
+  border-color: var(--color-borde-fuerte);
+}
+
+.campo-control:focus {
+  border-color: var(--color-primario);
+}
+
+.campo-textarea {
+  resize: vertical;
+  min-height: 140px;
+}
+
+.boton-enviar {
+  background-color: var(--color-primario);
+  color: #ffffff;
+  padding: 0.85rem 2rem;
+  font-size: 1.05rem;
+  font-weight: 700;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color var(--transicion-estandar), transform var(--transicion-estandar);
+  width: 100%;
+}
+
+.boton-enviar:hover {
+  background-color: var(--color-primario-hover);
+}
+
+.boton-enviar:active {
+  transform: translateY(1px);
+}
+
+/* ==========================================================================
+   PIE DE PÁGINA
+   ========================================================================== */
+.sitio-footer {
+  background-color: #111827;
+  color: #9ca3af;
+  padding: 2.5rem 0;
+  font-size: 0.92rem;
+  border-top: 1px solid #374151;
+}
+
+.footer-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.volver-arriba {
+  color: #d1d5db;
+  text-decoration: none;
+  font-weight: 600;
+  padding: 0.4rem 0.8rem;
+  border-radius: 4px;
+  border: 1px solid #4b5563;
+  transition: all var(--transicion-estandar);
+}
+
+.volver-arriba:hover {
+  color: #ffffff;
+  border-color: #9ca3af;
+  background-color: #1f2937;
+}
+
+/* ==========================================================================
+   MEDIA QUERIES (Responsividad y Adaptabilidad)
+   ========================================================================== */
+
+/* Tablets y pantallas intermedias */
+@media (max-width: 860px) {
+  .autor-tarjeta {
+    flex-direction: column;
+    text-align: center;
+    padding: 2rem 1.5rem;
+    gap: 1.5rem;
+  }
+
+  .redes-lista {
+    justify-content: center;
+  }
+}
+
+/* Dispositivos móviles */
+@media (max-width: 600px) {
+  .header-inner {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .nav-lista {
+    gap: 0.75rem;
+  }
+
+  .seccion-hero h2 {
+    font-size: 1.75rem;
+  }
+
+  .seccion-catalogo,
+  .seccion-autor,
+  .seccion-contacto {
+    padding: 2.5rem 0;
+  }
+
+  .filtro-categoria {
+    gap: 0.5rem;
+  }
+
+  .filtro-etiqueta {
+    padding: 0.5rem 0.9rem;
+    font-size: 0.85rem;
+  }
+
+  .galeria-grilla {
+    grid-template-columns: 1fr;
+  }
+
+  .marco-passepartout {
+    padding: 1rem;
+  }
+
+  .marco-passepartout img {
+    height: 230px;
+  }
+
+  .formulario-contacto {
+    padding: 1.5rem 1rem;
+  }
+
+  .footer-inner {
+    flex-direction: column;
+    text-align: center;
+    gap: 1.25rem;
+  }
+}

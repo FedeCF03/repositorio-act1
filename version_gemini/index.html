@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Galería de arte y dibujos estática: caricaturas, paisajes y animé. Sin dependencias de JavaScript y con soporte de accesibilidad.">
+  <title>Galería de Arte & Dibujos | Portafolio Estático</title>
+  <link rel="stylesheet" href="estilosIA.css">
+</head>
+<body>
+  <!-- Enlace accesible de salto al contenido -->
+  <a href="#contenido-principal" class="skip-link">Saltar al contenido principal</a>
+
+  <!-- Encabezado y Navegación Principal -->
+  <header class="sitio-header" id="inicio">
+    <div class="contenedor header-inner">
+      <div class="logo-area">
+        <span class="logo-icono" aria-hidden="true">🎨</span>
+        <h1 class="logo-texto">Trazo & Papel</h1>
+      </div>
+      <nav class="nav-principal" aria-label="Navegación principal">
+        <ul class="nav-lista">
+          <li><a href="#catalogo" class="nav-enlace">Catálogo</a></li>
+          <li><a href="#autor" class="nav-enlace">Sobre mí</a></li>
+          <li><a href="#contacto" class="nav-enlace">Contacto</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Contenedor Principal -->
+  <main id="contenido-principal">
+    
+    <!-- Hero / Bienvenida -->
+    <section class="seccion-hero">
+      <div class="contenedor">
+        <h2>Ilustraciones & Obra Gráfica</h2>
+        <p>Explora la colección temática de bocetos, ilustraciones digitales y tradicionales distribuidas por categorías.</p>
+      </div>
+    </section>
+
+    <!-- Sección Catálogo con Filtro CSS Puro (:checked) -->
+    <section class="seccion-catalogo" id="catalogo" aria-labelledby="titulo-catalogo">
+      <div class="contenedor">
+        <h2 id="titulo-catalogo" class="seccion-titulo">Catálogo de Obras</h2>
+        <p class="seccion-subtitulo">Selecciona una categoría para filtrar las ilustraciones sin recargar la página:</p>
+
+        <!-- Contenedor del sistema interactivo CSS puro -->
+        <div class="sistema-galeria">
+          
+          <!-- Controles de filtro accesibles mediante radio buttons -->
+          <fieldset class="filtro-categoria" aria-label="Filtrar por categoría">
+            <legend class="sr-only">Seleccionar categoría de dibujos</legend>
+            
+            <input type="radio" name="categoria" id="cat-todas" class="filtro-radio" checked>
+            <label for="cat-todas" class="filtro-etiqueta">
+              <span class="icono-categoria" aria-hidden="true">📁</span> Todas
+            </label>
+
+            <input type="radio" name="categoria" id="cat-caricaturas" class="filtro-radio">
+            <label for="cat-caricaturas" class="filtro-etiqueta">
+              <span class="icono-categoria" aria-hidden="true">🎭</span> Caricaturas
+            </label>
+
+            <input type="radio" name="categoria" id="cat-paisajes" class="filtro-radio">
+            <label for="cat-paisajes" class="filtro-etiqueta">
+              <span class="icono-categoria" aria-hidden="true">🌲</span> Paisajes
+            </label>
+
+            <input type="radio" name="categoria" id="cat-anime" class="filtro-radio">
+            <label for="cat-anime" class="filtro-etiqueta">
+              <span class="icono-categoria" aria-hidden="true">✨</span> Animé
+            </label>
+          </fieldset>
+
+          <!-- Grilla de Tarjetas de Dibujos -->
+          <div class="galeria-grilla" role="region" aria-live="polite" aria-label="Resultados del catálogo">
+            
+            <!-- CARICATURAS -->
+            <article class="tarjeta-dibujo item-caricaturas" data-categoria="caricaturas">
+              <figure class="cuadro-arte">
+                <div class="marco-passepartout">
+                  <img src="imágenes/caricatura1.png" alt="Caricatura estilizada en tinta negra de un músico de jazz tocando el saxofón con expresión apasionada" loading="lazy">
+                </div>
+                <figcaption class="info-obra">
+                  <span class="badge-categoria">Caricaturas</span>
+                  <h3 class="obra-titulo">El Saxofonista Nocturno</h3>
+                  <p class="obra-descripcion">Tinta china y estilización anatómica con enfoque dinámico.</p>
+                </figcaption>
+              </figure>
+            </article>
+
+            <article class="tarjeta-dibujo item-caricaturas" data-categoria="caricaturas">
+              <figure class="cuadro-arte">
+                <div class="marco-passepartout">
+                  <img src="imágenes/caricatura2.png" alt="Retrato satírico y expresivo de un pensador clásico rodeado de libros y gestos exagerados" loading="lazy">
+                </div>
+                <figcaption class="info-obra">
+                  <span class="badge-categoria">Caricaturas</span>
+                  <h3 class="obra-titulo">Tertulia Filosófica</h3>
+                  <p class="obra-descripcion">Lápiz grafito y tramas de sombras con proporciones deformadas.</p>
+                </figcaption>
+              </figure>
+            </article>
+
+            <!-- PAISAJES -->
+            <article class="tarjeta-dibujo item-paisajes" data-categoria="paisajes">
+              <figure class="cuadro-arte">
+                <div class="marco-passepartout">
+                  <img src="imágenes/paisaje1.png" alt="Dibujo panorámico de un atardecer en el bosque con siluetas de pinos y reflejos sobre un lago calmo" loading="lazy">
+                </div>
+                <figcaption class="info-obra">
+                  <span class="badge-categoria">Paisajes</span>
+                  <h3 class="obra-titulo">Serenidad del Valle</h3>
+                  <p class="obra-descripcion">Paisaje digital con paleta cálida y gradación de luz crepuscular.</p>
+                </figcaption>
+              </figure>
+            </article>
+
+            <article class="tarjeta-dibujo item-paisajes" data-categoria="paisajes">
+              <figure class="cuadro-arte">
+                <div class="marco-passepartout">
+                  <img src="imágenes/paisaje2.png" alt="Ilustración de cordillera nevada bajo un cielo estrellado con iluminación lunar fría" loading="lazy">
+                </div>
+                <figcaption class="info-obra">
+                  <span class="badge-categoria">Paisajes</span>
+                  <h3 class="obra-titulo">Cumbres Bajo la Nieve</h3>
+                  <p class="obra-descripcion">Composición monocromática con foco en texturas rocosas y perspectiva atmosférica.</p>
+                </figcaption>
+              </figure>
+            </article>
+
+            <!-- ANIMÉ -->
+            <article class="tarjeta-dibujo item-anime" data-categoria="anime">
+              <figure class="cuadro-arte">
+                <div class="marco-passepartout">
+                  <img src="imágenes/anime1.png" alt="Ilustración estilo animé de un guerrero con capa desgastada y espada de energía cósmica" loading="lazy">
+                </div>
+                <figcaption class="info-obra">
+                  <span class="badge-categoria">Animé</span>
+                  <h3 class="obra-titulo">Centinela del Éter</h3>
+                  <p class="obra-descripcion">Lineart nítido con coloreado cel-shading y efectos de iluminación neón.</p>
+                </figcaption>
+              </figure>
+            </article>
+
+            <article class="tarjeta-dibujo item-anime" data-categoria="anime">
+              <figure class="cuadro-arte">
+                <div class="marco-passepartout">
+                  <img src="imágenes/anime2.png" alt="Retrato estilo animé de una heroína en un entorno urbano cyberpunk bajo la lluvia" loading="lazy">
+                </div>
+                <figcaption class="info-obra">
+                  <span class="badge-categoria">Animé</span>
+                  <h3 class="obra-titulo">Luz de Neón & Lluvia</h3>
+                  <p class="obra-descripcion">Diseño de personajes contemporáneo con reflejos cromáticos y perspectiva angular.</p>
+                </figcaption>
+              </figure>
+            </article>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sección Sobre el Autor -->
+    <section class="seccion-autor" id="autor" aria-labelledby="titulo-autor">
+      <div class="contenedor">
+        <h2 id="titulo-autor" class="seccion-titulo">Sobre el Autor</h2>
+        <div class="autor-tarjeta">
+          <div class="autor-avatar-contenedor" aria-hidden="true">
+            <span class="avatar-placeholder">✏️</span>
+          </div>
+          <div class="autor-bio">
+            <h3>Ilustrador & Dibujante Tradicional / Digital</h3>
+            <p>
+              Apasionado por la técnica tradicional de tinta, el dibujo anatómico y la fantasía visual. Mi trabajo explora desde el humor y la deformación expresiva de la caricatura, hasta la ambientación cinematográfica de paisajes y el dinamismo narrativo del manga/animé.
+            </p>
+            <div class="autor-redes">
+              <h4 class="redes-titulo">Encuéntrame en redes:</h4>
+              <ul class="redes-lista">
+                <li><a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="red-enlace" aria-label="Instagram (abre en nueva pestaña)">Instagram</a></li>
+                <li><a href="https://artstation.com" target="_blank" rel="noopener noreferrer" class="red-enlace" aria-label="ArtStation (abre en nueva pestaña)">ArtStation</a></li>
+                <li><a href="https://twitter.com" target="_blank" rel="noopener noreferrer" class="red-enlace" aria-label="Twitter / X (abre en nueva pestaña)">Twitter / X</a></li>
+                <li><a href="https://behance.net" target="_blank" rel="noopener noreferrer" class="red-enlace" aria-label="Behance (abre en nueva pestaña)">Behance</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sección de Contacto -->
+    <section class="seccion-contacto" id="contacto" aria-labelledby="titulo-contacto">
+      <div class="contenedor">
+        <h2 id="titulo-contacto" class="seccion-titulo">Información de Contacto</h2>
+        <p class="seccion-subtitulo">¿Interesado en una comisión personalizada o colaboración artística? Déjame un mensaje:</p>
+
+        <form class="formulario-contacto" action="#" method="post">
+          <div class="campo-grupo">
+            <label for="nombre" class="campo-label">Nombre y Apellido <span class="requerido" aria-hidden="true">*</span></label>
+            <input type="text" id="nombre" name="nombre" class="campo-control" placeholder="Ej: Marcela Gómez" required autocomplete="name">
+          </div>
+
+          <div class="campo-grupo">
+            <label for="email" class="campo-label">Correo Electrónico <span class="requerido" aria-hidden="true">*</span></label>
+            <input type="email" id="email" name="email" class="campo-control" placeholder="Ej: marcela@ejemplo.com" required autocomplete="email">
+          </div>
+
+          <div class="campo-grupo">
+            <label for="asunto" class="campo-label">Asunto <span class="requerido" aria-hidden="true">*</span></label>
+            <input type="text" id="asunto" name="asunto" class="campo-control" placeholder="Ej: Consulta por comisión de caricatura" required>
+          </div>
+
+          <div class="campo-grupo">
+            <label for="mensaje" class="campo-label">Mensaje <span class="requerido" aria-hidden="true">*</span></label>
+            <textarea id="mensaje" name="mensaje" class="campo-control campo-textarea" rows="6" placeholder="Describe tu idea, dimensiones deseadas o fecha límite..." required></textarea>
+          </div>
+
+          <div class="form-acciones">
+            <button type="submit" class="boton-enviar">Enviar Mensaje</button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Pie de Página -->
+  <footer class="sitio-footer">
+    <div class="contenedor footer-inner">
+      <p>&copy; 2026 Trazo & Papel. Catálogo y portafolio estático construido con HTML5 y CSS3 puro.</p>
+      <a href="#inicio" class="volver-arriba" aria-label="Volver arriba de la página">↑ Volver al inicio</a>
+    </div>
+  </footer>
+</body>
+</html>

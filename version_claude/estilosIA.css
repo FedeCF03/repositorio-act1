@@ -1,0 +1,344 @@
+/* =========================================================
+   CUADERNO DE DIBUJOS — estilosIA.css
+   Sitio 100% estático: sin JavaScript. La navegación por
+   categorías se resuelve con radio buttons + :checked.
+   ========================================================= */
+
+/* ---------- 1. Tokens ---------- */
+:root {
+  --papel: #ECE8DE;
+  --papel-panel: #FBF9F4;
+  --tinta: #221F1C;
+  --tinta-suave: #4A453E;
+  --linea: #C9C0AE;
+
+  --acento-caricaturas: #A8391F;
+  --acento-paisajes: #2C5B38;
+  --acento-anime: #38397F;
+
+  --foco: #1857C9;
+
+  --fuente-titulos: Georgia, "Iowan Old Style", "Times New Roman", serif;
+  --fuente-cuerpo: "Segoe UI", "Helvetica Neue", Arial, system-ui, sans-serif;
+
+  --radio-borde: 2px;
+  --ancho-maximo: 68rem;
+}
+
+/* ---------- 2. Reset básico ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--papel);
+  color: var(--tinta);
+  font-family: var(--fuente-cuerpo);
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+
+img { max-width: 100%; display: block; }
+
+h1, h2, h3 {
+  font-family: var(--fuente-titulos);
+  color: var(--tinta);
+  line-height: 1.2;
+  margin: 0 0 .6em;
+}
+
+h2 { font-size: clamp(1.5rem, 1.1rem + 1.4vw, 2.1rem); }
+h3 { font-size: 1.15rem; }
+
+p { margin: 0 0 1em; max-width: 62ch; color: var(--tinta-suave); }
+
+a { color: var(--acento-anime); }
+a:hover { text-decoration-thickness: 2px; }
+
+/* Utilidad accesible: oculta visualmente sin quitar del árbol de accesibilidad */
+.solo-lectores-pantalla {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Foco de teclado visible y consistente en toda la página */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+label:focus-within {
+  outline: 3px solid var(--foco);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* ---------- 3. Enlace de salto ---------- */
+.salto-enlace {
+  position: absolute;
+  left: 1rem; top: -3rem;
+  background: var(--tinta);
+  color: #fff;
+  padding: .6em 1em;
+  border-radius: 0 0 6px 6px;
+  transition: top .15s ease;
+  z-index: 100;
+}
+.salto-enlace:focus { top: 0; }
+
+/* ---------- 4. Cabecera y navegación ---------- */
+.cabecera {
+  background: var(--papel-panel);
+  border-bottom: var(--radio-borde) solid var(--tinta);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.cabecera__interior {
+  max-width: var(--ancho-maximo);
+  margin: 0 auto;
+  padding: .9rem 1.25rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: .75rem;
+}
+
+.marca {
+  font-family: var(--fuente-titulos);
+  font-weight: 700;
+  font-size: 1.25rem;
+  margin: 0;
+}
+
+.nav-principal ul {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-principal a {
+  color: var(--tinta);
+  text-decoration: none;
+  padding: .3em .1em;
+  border-bottom: 2px solid transparent;
+}
+.nav-principal a:hover { border-bottom-color: var(--tinta); }
+
+/* ---------- 5. Estructura de secciones ---------- */
+.seccion { padding: 3rem 1.25rem; scroll-margin-top: 4.5rem; }
+.seccion--alterna { background: var(--papel-panel); }
+.seccion__interior { max-width: var(--ancho-maximo); margin: 0 auto; }
+.seccion__intro { max-width: 58ch; }
+
+/* ---------- 6. Pestañas de categoría (100% CSS) ---------- */
+.pestanas {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+/* Los inputs quedan en el flujo (para que el foco de teclado
+   funcione con flechas/Tab) pero visualmente ocultos. */
+.pestanas__input {
+  position: absolute;
+  width: 1px; height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+.pestanas__etiquetas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem;
+  margin-bottom: -2px; /* solapa con el borde superior del panel */
+}
+
+.pestanas__etiqueta {
+  cursor: pointer;
+  user-select: none;
+  padding: .65em 1.3em;
+  font-weight: 600;
+  border: var(--radio-borde) solid var(--tinta);
+  border-bottom: none;
+  border-radius: 10px 10px 0 0;
+  background: var(--papel);
+  color: var(--tinta);
+  transition: background-color .15s ease, color .15s ease, transform .1s ease;
+}
+
+.pestanas__etiqueta:hover { transform: translateY(-2px); }
+
+/* Color distintivo por categoría cuando está seleccionada */
+#tab-caricaturas:checked ~ .pestanas__etiquetas .pestanas__etiqueta--caricaturas,
+#tab-paisajes:checked   ~ .pestanas__etiquetas .pestanas__etiqueta--paisajes,
+#tab-anime:checked      ~ .pestanas__etiquetas .pestanas__etiqueta--anime {
+  background: var(--papel-panel);
+}
+.pestanas__etiqueta--caricaturas { border-color: var(--acento-caricaturas); }
+.pestanas__etiqueta--paisajes   { border-color: var(--acento-paisajes); }
+.pestanas__etiqueta--anime      { border-color: var(--acento-anime); }
+
+#tab-caricaturas:checked ~ .pestanas__etiquetas .pestanas__etiqueta--caricaturas { color: var(--acento-caricaturas); }
+#tab-paisajes:checked   ~ .pestanas__etiquetas .pestanas__etiqueta--paisajes   { color: var(--acento-paisajes); }
+#tab-anime:checked      ~ .pestanas__etiquetas .pestanas__etiqueta--anime      { color: var(--acento-anime); }
+
+/* Anillo de foco visible cuando el input asociado recibe foco por teclado */
+#tab-caricaturas:focus-visible ~ .pestanas__etiquetas .pestanas__etiqueta--caricaturas,
+#tab-paisajes:focus-visible   ~ .pestanas__etiquetas .pestanas__etiqueta--paisajes,
+#tab-anime:focus-visible      ~ .pestanas__etiquetas .pestanas__etiqueta--anime {
+  outline: 3px solid var(--foco);
+  outline-offset: 2px;
+}
+
+.pestanas__paneles {
+  border: var(--radio-borde) solid var(--tinta);
+  border-radius: 0 10px 10px 10px;
+  background: var(--papel-panel);
+  padding: 1.75rem;
+}
+
+.panel { display: none; }
+
+#tab-caricaturas:checked ~ .pestanas__paneles #panel-caricaturas,
+#tab-paisajes:checked   ~ .pestanas__paneles #panel-paisajes,
+#tab-anime:checked      ~ .pestanas__paneles #panel-anime {
+  display: block;
+}
+
+/* Borde superior del panel activo hereda el color de su categoría */
+#tab-caricaturas:checked ~ .pestanas__paneles { border-top-color: var(--acento-caricaturas); }
+#tab-paisajes:checked   ~ .pestanas__paneles { border-top-color: var(--acento-paisajes); }
+#tab-anime:checked      ~ .pestanas__paneles { border-top-color: var(--acento-anime); }
+
+/* ---------- 7. Galería y marco (passe-partout) de cada dibujo ---------- */
+.galeria {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  gap: 1.5rem;
+}
+
+.marco {
+  margin: 0;
+  background: #fff;
+  border: var(--radio-borde) solid var(--tinta);
+  padding: .9rem;                 /* passe-partout uniforme */
+  box-shadow: 4px 4px 0 var(--linea);
+}
+
+.marco img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border: 1px solid var(--linea);
+}
+
+.marco figcaption {
+  margin-top: .75rem;
+  font-size: .92rem;
+  color: var(--tinta-suave);
+  text-align: center;
+}
+
+/* ---------- 8. Autoría ---------- */
+.autoria { max-width: 62ch; }
+.redes { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 1rem; }
+.redes a {
+  display: inline-block;
+  padding: .5em 1em;
+  border: 1px solid var(--tinta);
+  border-radius: 6px;
+  text-decoration: none;
+  color: var(--tinta);
+}
+.redes a:hover { background: var(--tinta); color: #fff; }
+
+/* ---------- 9. Formulario de contacto ---------- */
+.formulario {
+  max-width: 40rem;
+  display: grid;
+  gap: 1.1rem;
+}
+
+.formulario__campo { display: grid; gap: .4rem; }
+
+.formulario__campo label { font-weight: 600; }
+
+.formulario__campo input,
+.formulario__campo textarea {
+  font: inherit;
+  color: var(--tinta);
+  background: #fff;
+  border: var(--radio-borde) solid var(--tinta);
+  border-radius: 6px;
+  padding: .65em .75em;
+  width: 100%;
+}
+
+.formulario__campo textarea { resize: vertical; }
+
+.boton {
+  justify-self: start;
+  font: inherit;
+  font-weight: 700;
+  padding: .75em 1.75em;
+  border: var(--radio-borde) solid var(--tinta);
+  border-radius: 6px;
+  background: var(--tinta);
+  color: #fff;
+  cursor: pointer;
+}
+.boton:hover { background: var(--acento-anime); border-color: var(--acento-anime); }
+
+.formulario__nota {
+  font-size: .85rem;
+  max-width: 55ch;
+}
+
+/* ---------- 10. Pie de página ---------- */
+.pie {
+  border-top: var(--radio-borde) solid var(--tinta);
+  padding: 1.5rem 1.25rem;
+  text-align: center;
+  font-size: .9rem;
+  color: var(--tinta-suave);
+}
+
+/* ---------- 11. Responsividad ---------- */
+
+/* Tablets */
+@media (max-width: 900px) {
+  .seccion { padding: 2.25rem 1.25rem; }
+  .pestanas__paneles { padding: 1.25rem; }
+}
+
+/* Móviles */
+@media (max-width: 600px) {
+  .cabecera__interior { flex-direction: column; align-items: flex-start; }
+  .nav-principal ul { gap: 1rem; flex-wrap: wrap; }
+
+  .pestanas__etiquetas { gap: .35rem; }
+  .pestanas__etiqueta { padding: .55em .9em; font-size: .95rem; }
+
+  .galeria { grid-template-columns: 1fr; }
+
+  .marco { box-shadow: 3px 3px 0 var(--linea); }
+}
+
+/* Respeta la preferencia de reducir movimiento */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .pestanas__etiqueta, .salto-enlace { transition: none; }
+}

@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cuaderno de Dibujos — Catálogo, autoría y contacto</title>
+<meta name="description" content="Galería estática de dibujos organizada en caricaturas, paisajes y animé, con formulario de contacto e información de la persona autora.">
+<link rel="stylesheet" href="estilosIA.css">
+</head>
+<body>
+
+<a class="salto-enlace" href="#contenido">Saltar al contenido principal</a>
+
+<header class="cabecera">
+  <div class="cabecera__interior">
+    <p class="marca">Cuaderno de Dibujos</p>
+    <nav class="nav-principal" aria-label="Navegación principal">
+      <ul>
+        <li><a href="#catalogo">Catálogo</a></li>
+        <li><a href="#autoria">Quién mantiene el sitio</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="contenido">
+
+  <!-- ===================== CATÁLOGO ===================== -->
+  <section id="catalogo" class="seccion" aria-labelledby="catalogo-titulo">
+    <div class="seccion__interior">
+      <h2 id="catalogo-titulo">Catálogo de dibujos</h2>
+      <p class="seccion__intro">Tres cuadernos, tres estilos. Elegí una categoría para ver los dibujos guardados en esa página del cuaderno.</p>
+
+      <fieldset class="pestanas">
+        <legend class="solo-lectores-pantalla">Elegir categoría de dibujos a mostrar</legend>
+
+        <input type="radio" name="categoria" id="tab-caricaturas" class="pestanas__input" checked>
+        <input type="radio" name="categoria" id="tab-paisajes" class="pestanas__input">
+        <input type="radio" name="categoria" id="tab-anime" class="pestanas__input">
+
+        <div class="pestanas__etiquetas">
+          <label for="tab-caricaturas" class="pestanas__etiqueta pestanas__etiqueta--caricaturas">Caricaturas</label>
+          <label for="tab-paisajes" class="pestanas__etiqueta pestanas__etiqueta--paisajes">Paisajes</label>
+          <label for="tab-anime" class="pestanas__etiqueta pestanas__etiqueta--anime">Animé</label>
+        </div>
+
+        <div class="pestanas__paneles">
+
+          <section id="panel-caricaturas" class="panel panel--caricaturas">
+            <h3 class="solo-lectores-pantalla">Dibujos: caricaturas</h3>
+            <div class="galeria">
+              <figure class="marco">
+                <img src="imágenes/caricatura1.png" alt="Caricatura de un hombre con sombrero de copa riendo a carcajadas, rasgos exagerados y trazo grueso" loading="lazy">
+                <figcaption>Retrato con sombrero — tinta y rotulador</figcaption>
+              </figure>
+              <figure class="marco">
+                <img src="imágenes/caricatura2.png" alt="Caricatura de una mujer con gafas de sol grandes y peinado voluminoso, estilo cómic de prensa" loading="lazy">
+                <figcaption>Peinado imposible — lápiz de color</figcaption>
+              </figure>
+            </div>
+          </section>
+
+          <section id="panel-paisajes" class="panel panel--paisajes">
+            <h3 class="solo-lectores-pantalla">Dibujos: paisajes</h3>
+            <div class="galeria">
+              <figure class="marco">
+                <img src="imágenes/paisaje1.png" alt="Paisaje de montañas nevadas al atardecer con un lago en primer plano" loading="lazy">
+                <figcaption>Cordillera al atardecer — acuarela</figcaption>
+              </figure>
+              <figure class="marco">
+                <img src="imágenes/paisaje2.png" alt="Paisaje de un bosque de pinos atravesado por un río, con niebla matutina" loading="lazy">
+                <figcaption>Bosque con niebla — grafito</figcaption>
+              </figure>
+            </div>
+          </section>
+
+          <section id="panel-anime" class="panel panel--anime">
+            <h3 class="solo-lectores-pantalla">Dibujos: animé</h3>
+            <div class="galeria">
+              <figure class="marco">
+                <img src="imágenes/anime1.png" alt="Personaje de estilo animé con cabello azul largo y ojos grandes, expresión serena" loading="lazy">
+                <figcaption>Personaje original — digital</figcaption>
+              </figure>
+              <figure class="marco">
+                <img src="imágenes/anime2.png" alt="Personaje de estilo animé en pose dinámica sosteniendo una espada, fondo de velocidad" loading="lazy">
+                <figcaption>Escena de acción — digital</figcaption>
+              </figure>
+            </div>
+          </section>
+
+        </div>
+      </fieldset>
+    </div>
+  </section>
+
+  <!-- ===================== AUTORÍA ===================== -->
+  <section id="autoria" class="seccion seccion--alterna" aria-labelledby="autoria-titulo">
+    <div class="seccion__interior">
+      <h2 id="autoria-titulo">Quién mantiene el sitio</h2>
+      <div class="autoria">
+        <p>
+          Hola, soy quien dibuja y mantiene este cuaderno digital. Dibujo desde hace más de diez años,
+          principalmente caricaturas por encargo, paisajes a partir de fotografías de viajes y
+          personajes de animé para proyectos personales. Este sitio reúne una selección de esos trabajos,
+          organizada como si fueran páginas de un cuaderno de bocetos.
+        </p>
+        <p>
+          Publico trabajo nuevo de forma esporádica y respondo consultas sobre encargos a través
+          del formulario de contacto de esta misma página.
+        </p>
+        <h3>Redes y enlaces</h3>
+        <ul class="redes">
+          <li><a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer">Instagram <span class="solo-lectores-pantalla">(se abre en una pestaña nueva)</span></a></li>
+          <li><a href="https://www.behance.net/" target="_blank" rel="noopener noreferrer">Behance <span class="solo-lectores-pantalla">(se abre en una pestaña nueva)</span></a></li>
+          <li><a href="https://mastodon.social/" target="_blank" rel="noopener noreferrer">Mastodon <span class="solo-lectores-pantalla">(se abre en una pestaña nueva)</span></a></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== CONTACTO ===================== -->
+  <section id="contacto" class="seccion" aria-labelledby="contacto-titulo">
+    <div class="seccion__interior">
+      <h2 id="contacto-titulo">Información de contacto</h2>
+      <p class="seccion__intro">Completá el formulario para consultar por encargos, permisos de uso o cualquier otra duda.</p>
+
+      <form class="formulario" action="#" method="get">
+        <div class="formulario__campo">
+          <label for="nombre">Nombre</label>
+          <input type="text" id="nombre" name="nombre" autocomplete="name" required>
+        </div>
+
+        <div class="formulario__campo">
+          <label for="email">Correo electrónico</label>
+          <input type="email" id="email" name="email" autocomplete="email" required>
+        </div>
+
+        <div class="formulario__campo">
+          <label for="asunto">Asunto</label>
+          <input type="text" id="asunto" name="asunto" required>
+        </div>
+
+        <div class="formulario__campo">
+          <label for="mensaje">Mensaje</label>
+          <textarea id="mensaje" name="mensaje" rows="6" required></textarea>
+        </div>
+
+        <button type="submit" class="boton">Enviar mensaje</button>
+        <p class="formulario__nota">Este formulario es de demostración: al ser un sitio estático sin JavaScript ni servidor, necesita conectarse a un servicio de envío externo (por ejemplo, una acción de correo o un servicio de formularios) para funcionar de verdad.</p>
+      </form>
+    </div>
+  </section>
+
+</main>
+
+<footer class="pie">
+  <p>&copy; 2026 Cuaderno de Dibujos. Sitio estático construido con HTML y CSS puro.</p>
+</footer>
+
+</body>
+</html>
